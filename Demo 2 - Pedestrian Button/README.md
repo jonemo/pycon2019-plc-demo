@@ -81,3 +81,17 @@ sock.recv(1024)  # if everything works, the PLC responds with "ACK"
 sock.sendall(b"DISCO")  # the traffic signal flashes its lights until the pedestrian button is pressed
 sock.close()
 ```
+
+### `datascience/__init__.py`
+
+This file is used to support a joke about data science in the presentation.
+It's at approximately [20:47](https://youtu.be/a0l29lgDf6k?t=1247) in the video recording.
+Basically, it allows me to write the following code in a REPL and get back a (static) list of values that happens to be exactly what I want for the next on-stage demo:
+
+```python
+from pymodbus.client.sync import ModbusTCPClient
+from datascience import machine_learning
+
+client = ModbusTCPClient("192.168.1.9")
+client.write_registers(0, machine_learning())
+```
