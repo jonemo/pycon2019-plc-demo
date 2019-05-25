@@ -7,7 +7,7 @@ Please see the README.md at the top level of this repo for details where to get 
 
 ## Related section of the presentation
 
-The examples in this repo appear in the PyCon talk video between [8:10](https://youtu.be/a0l29lgDf6k?t=490) and [13:14](https://youtu.be/a0l29lgDf6k?t=794).
+The examples in this folder appear in the PyCon talk video between [8:10](https://youtu.be/a0l29lgDf6k?t=490) and [13:14](https://youtu.be/a0l29lgDf6k?t=794).
 In the talk I live-code the files and explain the basics of the ladder logic language as I go along.
 I also run the programs on a PLC which is wired up to a traffic signal as a real-world example of controlling devices from PLC logic.
 
