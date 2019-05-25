@@ -65,11 +65,27 @@ The `Traffic Light.adpro` also contains various configuration settings:
 
 ### `modbus_client.py`
 
+This file represents the state of the demo program that can be seen on screen at [18:17](https://youtu.be/a0l29lgDf6k?t=1097) in the video.
+It connect to the Modbus server running on port 502 of the PLC and writes to specific registers.
+To see which registers maps to which tag (variable) in the ladder logic code, open the "Tag Database" window in the Productivity Suite software.
 
 ### `modbus_server.py`
 
+This script was running in the background during my presentation at PyCon, but sadly I didn't have the time to show and explain it (i.e. you won't see it referenced in the talk video).
+The script uses the `pymodbus` package to run a Modbus server on port 502. 
+The `Demo2Part2` of the `Traffic Light.adpro` PLC project contains the logic to publish the current value of the PLC's output pins (which map to the colors of the traffic signal) into the registers of the Modbus server.
+Whenever new values arrive, the `MyDataBlock.setValues()` method prints a nicely formatted line into the terminal that shows which lights of the traffic signals are currently on.
+
+Note that the PLC's logic hard-codes the IP address of the Modbus server it publishes the values to.
+In my presentation setup, the laptop had IP `192.168.1.99`.
+You can change that value in the `Demo2Part2` task of the `Traffic Light.adpro` PLC project.
 
 ### `socket_client.py`
+
+This script is an example for how you can send commands to the "Custom Protocol over Ethernet" server defined in the `Demo2Part3` task of the `Traffic Light.adpro` PLC project.
+If you read the PLC code carefully, you will notice that the PLC logic only looks at the first three characters of an incoming message. 
+Therefore, sending `REQUEST` has the same effect as sending `REQ` and sending `DISCO` has the same effect as sending `DIS`.
+Note that `socket.sendall()` should get bytes and not Unicode strings.
 
 ```python
 import socket
